@@ -16,7 +16,7 @@
 # This script should print one numerical value: the cost that must be minimized.
 # Exit with 0 if no error, with 1 in case of error
 ###########main####################################################################
-EXE=../main_.py
+EXE=../main.py
 
 
 CONFIG_ID=$1
@@ -54,8 +54,9 @@ error() {
 # the first column of the last line of the output.
 if [ -s "${DAT_FILE}" ]; then
 	COST=$(cat "${DAT_FILE}" | grep -e '^[0-9]' | cut -f1)
+	# use echo "-$COST" to
 	# Negative because score is maximised but irace minimises.
-    echo "-$COST"
+    echo "$COST"
     rm -f "${LOGS}" "${DAT_FILE}" 
     exit 0
 else
